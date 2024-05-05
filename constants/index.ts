@@ -1,27 +1,27 @@
 export const SidebarLinks = [
   {
-    label: "Home",
-    route: "/home",
+    label: "Dashboard",
+    route: "/dashboard",
     imgUrl: "/icons/Home.svg",
   },
   {
-    label: "Upcoming",
-    route: "/upcoming",
+    label: "Tansfer",
+    route: "/transfer",
     imgUrl: "/icons/upcoming.svg",
   },
   {
-    label: "Previous",
-    route: "/previous",
+    label: "History",
+    route: "/history",
     imgUrl: "/icons/previous.svg",
   },
   {
-    label: "Recordings",
-    route: "/recordings",
+    label: "Banks",
+    route: "/banks",
     imgUrl: "/icons/Video.svg",
   },
   {
-    label: "Personal Class",
-    route: "/personal",
+    label: "Bulk transfer",
+    route: "/bulk",
     imgUrl: "/icons/add-personal.svg",
   },
 ];
