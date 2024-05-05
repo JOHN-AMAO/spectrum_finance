@@ -1,19 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export function Landingpage() {
   return (
-    <div className='flex flex-col min-h-[100dvh]'>
-      <header className='px-4 lg:px-6 h-14 flex items-center'>
+    <div className='flex flex-col min-h-[100dvh] text-white bg-black'>
+      <header className='px-4 pt-8 lg:px-6 h-14 flex items-center'>
         <Link
           className='flex flex-col items-center justify-center'
           href='/'
         >
-          <h1 className='text-2xl'>Spectrum</h1>
-          <p>Finance</p>
+          <h1 className='text-2xl font-extrabold'>Spectrum</h1>
+          <span className='text-sm'>Finance</span>
+          <span className='text-sm'>Powered by Chimoney</span>
           <span className='sr-only'>Fintech Platform</span>
         </Link>
-        <nav className='ml-auto flex gap-4 sm:gap-6'>
+        <nav className='ml-auto flex justify-center items-center gap-4 sm:gap-6'>
           <Link
             className='text-sm font-medium hover:underline underline-offset-4'
             href='#'
@@ -38,10 +40,13 @@ export function Landingpage() {
           >
             Contact
           </Link>
+          <Link href='/auth'>
+            <Button variant='outline'>Login</Button>
+          </Link>
         </nav>
       </header>
       <main className='flex-1'>
-        <section className='w-full py-12 md:py-24 lg:py-32 xl:py-48'>
+        <section className='w-full py-4 md:py-12 lg:py-12 xl:py-12 px-6'>
           <div className='container px-4 md:px-6'>
             <div className='grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]'>
               <div className='flex flex-col justify-center space-y-4'>
@@ -63,7 +68,7 @@ export function Landingpage() {
                     Get Started
                   </Link>
                   <Link
-                    className='inline-flex h-10 items-center justify-center rounded-md border border-[#0070f3 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-[#0070f3] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0070f3] disabled:pointer-events-none disabled:opacity-50  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300'
+                    className='inline-flex h-10 items-center justify-center rounded-md border border-[#0070f3  px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-[#0070f3] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0070f3] disabled:pointer-events-none disabled:opacity-50  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300'
                     href='#'
                   >
                     Learn More
@@ -72,19 +77,19 @@ export function Landingpage() {
               </div>
               <Image
                 alt='Hero'
-                className='mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last'
-                height='550'
-                src='/placeholder.svg'
-                width='550'
+                className='mx-auto aspect-square overflow-hidden rounded-xl sm:w-full lg:order-last'
+                height='400'
+                src='/box.png'
+                width='400'
               />
             </div>
           </div>
         </section>
-        <section className='w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800'>
+        <section className='w-full py-12 md:py-24 lg:py-32 '>
           <div className='container px-4 md:px-6'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800'>
+                <div className='inline-block rounded-lg px-3 py-1 text-sm '>
                   Key Features
                 </div>
                 <h2 className='text-3xl font-bold tracking-tighter sm:text-5xl'>
@@ -102,7 +107,7 @@ export function Landingpage() {
                 alt='Image'
                 className='mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last'
                 height='310'
-                src='/placeholder.svg'
+                src='/box.png'
                 width='550'
               />
               <div className='flex flex-col justify-center space-y-4'>
@@ -142,7 +147,7 @@ export function Landingpage() {
         <section className='w-full py-12 md:py-24 lg:py-32 border-t'>
           <div className='container grid items-center justify-center gap-4 px-4 text-center md:px-6'>
             <div className='space-y-3'>
-              <div className='inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800'>
+              <div className='inline-block rounded-lg bg-gray-600 px-3 py-1 text-sm dark:bg-gray-800'>
                 Security
               </div>
               <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
@@ -155,7 +160,7 @@ export function Landingpage() {
             </div>
             <div className='mx-auto w-full max-w-sm space-y-2'>
               <div className='grid grid-cols-2 gap-4'>
-                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50'>
+                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200  p-4 shadow-sm transition-colors   dark:hover:bg-gray-800 dark:hover:text-gray-50'>
                   <LockIcon className='h-8 w-8' />
                   <h4 className='text-lg font-semibold'>Encryption</h4>
                   <p className='text-sm text-gray-500 dark:text-gray-400'>
@@ -163,7 +168,7 @@ export function Landingpage() {
                     standards.
                   </p>
                 </div>
-                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50'>
+                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200  p-4 shadow-sm transition-colors   dark:hover:bg-gray-800 dark:hover:text-gray-50'>
                   <ShieldCheckIcon className='h-8 w-8' />
                   <h4 className='text-lg font-semibold'>Compliance</h4>
                   <p className='text-sm text-gray-500 dark:text-gray-400'>
@@ -171,14 +176,14 @@ export function Landingpage() {
                     regulations.
                   </p>
                 </div>
-                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50'>
+                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200  p-4 shadow-sm transition-colors   dark:hover:bg-gray-800 dark:hover:text-gray-50'>
                   <KeyIcon className='h-8 w-8' />
                   <h4 className='text-lg font-semibold'>Authentication</h4>
                   <p className='text-sm text-gray-500 dark:text-gray-400'>
                     Secure your account with multi-factor authentication.
                   </p>
                 </div>
-                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50'>
+                <div className='flex flex-col items-center justify-center space-y-2 rounded-md border border-gray-200  p-4 shadow-sm transition-colors   dark:hover:bg-gray-800 dark:hover:text-gray-50'>
                   <ShieldIcon className='h-8 w-8' />
                   <h4 className='text-lg font-semibold'>Fraud Protection</h4>
                   <p className='text-sm text-gray-500 dark:text-gray-400'>
@@ -190,7 +195,7 @@ export function Landingpage() {
             </div>
           </div>
         </section>
-        <section className='w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800'>
+        <section className='w-full py-12 md:py-24 lg:py-32 dark:bg-gray-800'>
           <div className='container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10'>
             <div className='space-y-2'>
               <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
@@ -209,7 +214,7 @@ export function Landingpage() {
                 Contact Sales
               </Link>
               <Link
-                className='inline-flex h-10 items-center justify-center rounded-md border border-[#0070f3] bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-[#0070f3] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0070f3] disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300'
+                className='inline-flex h-10 items-center justify-center rounded-md border border-[#0070f3] px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-[#0070f3] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0070f3] disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300'
                 href='#'
               >
                 Learn more

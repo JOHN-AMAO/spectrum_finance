@@ -7,8 +7,8 @@ import AuthContext from "./context/AuthContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Spectrum Finance - Changing the way students learn ",
-  description: "Virtual classes for everyone",
+  title: "Spectrum Finance - Revolutionizing payments ",
+  description: "Secure Payments, Seamless Finance Management",
   icons: {
     icon: "/icons/logo.svg",
   },
