@@ -7,7 +7,7 @@ import AuthContext from "./context/AuthContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SnapLearn - Changing the way students learn ",
+  title: "Spectrum Finance - Changing the way students learn ",
   description: "Virtual classes for everyone",
   icons: {
     icon: "/icons/logo.svg",

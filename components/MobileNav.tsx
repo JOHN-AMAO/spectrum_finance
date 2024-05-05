@@ -42,7 +42,9 @@ const MobileNav = () => {
               height={32}
               alt='yoom logo'
             />
-            <p className='text-[16px] font-extrabold text-white'>Snaplearn</p>
+            <p className='text-[16px] font-extrabold text-white'>
+              Spectrum Finance
+            </p>
           </Link>
           <div className='flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto'>
             <SheetClose

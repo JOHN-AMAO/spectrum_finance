@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
-  title: "SnapLearn",
+  title: "Spectrum Finance",
   description: "Virtual classes for everyone.",
 };
 

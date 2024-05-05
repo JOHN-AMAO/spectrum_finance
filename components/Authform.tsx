@@ -90,7 +90,7 @@ export function AuthForm() {
             </div>
           </div>
           <p className='mt-2 text-center font-semibold text-sm text-black'>
-            Fill the form to use SnapLearn
+            Fill the form to use Spectrum Finance
           </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
