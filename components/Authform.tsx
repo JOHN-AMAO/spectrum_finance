@@ -22,7 +22,7 @@ export function AuthForm() {
   useEffect(() => {
     if (session?.status === "authenticated") {
       console.log("authenticated");
-      router.push("/home");
+      router.push("/dashboard");
     }
   }, [session, router]);
 

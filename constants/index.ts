@@ -7,17 +7,17 @@ export const SidebarLinks = [
   {
     label: "Tansfer",
     route: "/transfer",
-    imgUrl: "/icons/upcoming.svg",
+    imgUrl: "/icons/transfer.png",
   },
   {
     label: "History",
     route: "/history",
-    imgUrl: "/icons/previous.svg",
+    imgUrl: "/icons/history.png",
   },
   {
     label: "Banks",
     route: "/banks",
-    imgUrl: "/icons/Video.svg",
+    imgUrl: "/icons/banks.png",
   },
   {
     label: "Bulk transfer",

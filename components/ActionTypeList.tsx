@@ -24,7 +24,7 @@ const MeetingTypeList = () => {
         handleClick={() => router.push("/transfer")}
       />
       <HomeCard
-        img='/icons/join-meeting.svg'
+        img='/icons/history.png'
         title='Transaction History'
         description='view transaction history'
         className='bg-blue-1'
@@ -38,7 +38,7 @@ const MeetingTypeList = () => {
         handleClick={() => router.push("/analytics")}
       />
       <HomeCard
-        img='/icons/recordings.svg'
+        img='/icons/banks.png'
         title='Banks'
         description='Banks'
         className='bg-yellow-1'

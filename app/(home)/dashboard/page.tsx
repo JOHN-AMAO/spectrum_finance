@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <section className='flex size-full flex-col gap-5 text-white'>
       <div className='h-[303px] w-full rounded-[20px] bg-hero bg-cover'>
-        <div className='flex h-full flex-col justify-between max-md:py-8 lg:p-11'>
+        <div className='flex h-full flex-col justify-between max-md:py-8 lg:p-11 pl-6'>
           <h2 className='glassmorphism lg:text-3xl font-extrabold rounded py-2 '>
             {session.data?.user?.name}
           </h2>
