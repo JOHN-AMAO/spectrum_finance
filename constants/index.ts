@@ -25,3 +25,22 @@ export const SidebarLinks = [
     imgUrl: "/icons/add-personal.svg",
   },
 ];
+
+export const SidebarLinks2 = [
+  {
+    label: "Feature",
+    route: "/",
+  },
+  {
+    label: "Pricing",
+    route: "/",
+  },
+  {
+    label: "Security",
+    route: "/",
+  },
+  {
+    label: "contact",
+    route: "/",
+  },
+];

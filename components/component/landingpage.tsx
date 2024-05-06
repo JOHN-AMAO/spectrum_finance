@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import HomeNavBar from "../HomeNavBar";
 
 export function Landingpage() {
   return (
     <div className='flex flex-col min-h-[100dvh] text-white bg-black'>
-      <header className='px-4 pt-8 lg:px-6 h-14 flex items-center'>
+      <header className=' pt-8 lg:px-8 px-8 mb-16 h-14 flex sm:justify-between justify-between items-center mt-4 '>
         <Link
           className='flex flex-col items-center justify-center'
           href='/'
@@ -15,38 +16,41 @@ export function Landingpage() {
           <span className='text-sm'>Powered by Chimoney</span>
           <span className='sr-only'>Fintech Platform</span>
         </Link>
-        <nav className='ml-auto flex justify-center items-center gap-4 sm:gap-6'>
-          <Link
-            className='text-sm font-medium hover:underline underline-offset-4'
-            href='#'
-          >
-            Features
-          </Link>
-          <Link
-            className='text-sm font-medium hover:underline underline-offset-4'
-            href='#'
-          >
-            Pricing
-          </Link>
-          <Link
-            className='text-sm font-medium hover:underline underline-offset-4'
-            href='#'
-          >
-            Security
-          </Link>
-          <Link
-            className='text-sm font-medium hover:underline underline-offset-4'
-            href='#'
-          >
-            Contact
-          </Link>
-          <Link href='/auth'>
-            <Button variant='outline'>Login</Button>
-          </Link>
-        </nav>
+        <div className='flex justify-between '>
+          <nav className='ml-auto sm:flex justify-center items-center gap-4 sm:gap-6 hidden'>
+            <Link
+              className='text-sm font-medium hover:underline underline-offset-4'
+              href='#'
+            >
+              Features
+            </Link>
+            <Link
+              className='text-sm font-medium hover:underline underline-offset-4'
+              href='#'
+            >
+              Pricing
+            </Link>
+            <Link
+              className='text-sm font-medium hover:underline underline-offset-4'
+              href='#'
+            >
+              Security
+            </Link>
+            <Link
+              className='text-sm font-medium hover:underline underline-offset-4'
+              href='#'
+            >
+              Contact
+            </Link>
+            <Link href='/auth'>
+              <Button variant='outline'>Login</Button>
+            </Link>
+          </nav>
+          <HomeNavBar />
+        </div>
       </header>
       <main className='flex-1'>
-        <section className='w-full py-4 md:py-12 lg:py-12 xl:py-12 px-6'>
+        <section className='w-full py-4 md:py-4 lg:py-4 xl:py-4 px-6'>
           <div className='container px-4 md:px-6'>
             <div className='grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]'>
               <div className='flex flex-col justify-center space-y-4'>
