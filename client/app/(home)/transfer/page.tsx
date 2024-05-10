@@ -1,9 +1,12 @@
+import TransferForm from "@/components/TransferForm";
 import React from "react";
 
 const Page = () => {
   return (
     <>
-      <div>Page</div>
+      <div>
+        <TransferForm />
+      </div>
     </>
   );
 };
