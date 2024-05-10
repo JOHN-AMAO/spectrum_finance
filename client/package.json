@@ -19,7 +19,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@stream-io/video-react-sdk": "^0.5.8",
     "@types/react-datepicker": "^6.2.0",
-    "axios": "^1.6.2",
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

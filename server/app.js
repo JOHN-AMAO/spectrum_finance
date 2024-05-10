@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 const productRouter = require("./routes/route");
 
 const app = express();
 
+app.use(cors());
 // Set up mongoose connection
 const mongoDB = process.env.MONGODB_URI;
 

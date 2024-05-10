@@ -1,7 +1,7 @@
 var Product = require("../models/data");
 const axios = require("axios");
 
-const MAX_ITEMS = 20; // Define the maximum number of items to fetch
+// Define the maximum number of items to fetch
 let fetchedItems = []; // Initialize an array to store fetched items
 
 const options = {
@@ -20,25 +20,13 @@ module.exports.test = function (req, res) {
 };
 
 module.exports.getBanks = (req, res) => {
-  if (fetchedItems.length >= MAX_ITEMS) {
-    // If all items have been fetched, send the stored data
-    res.send(fetchedItems);
-    return;
-  }
-
   axios
     .request(options)
     .then(function (response) {
       // Add newly fetched items to the array
-      fetchedItems = fetchedItems.concat(response.data);
-
-      // If the total number of fetched items exceeds the maximum, trim the array
-      if (fetchedItems.length > MAX_ITEMS) {
-        fetchedItems = fetchedItems.slice(0, MAX_ITEMS);
-      }
 
       // Send the current state of fetched items to the client
-      res.send(fetchedItems);
+      res.json([response.data]);
     })
     .catch(function (error) {
       console.error(error);
