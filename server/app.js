@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const productRouter = require("./routes/product");
+const productRouter = require("./routes/route");
 
 const app = express();
 
@@ -19,7 +19,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/product", productRouter);
+app.use("/", productRouter);
 
 const port = 3001;
 
