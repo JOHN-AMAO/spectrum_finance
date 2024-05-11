@@ -1,11 +1,21 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var ProductSchema = new Schema({
-    name: {type: String, required: true, max: 100},
-    price: {type: Number, required: true},
+const bankSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    required: true,
+  },
+  code: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
 });
 
+const Bank = mongoose.model("Bank", bankSchema);
 
-// Export the model
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = Bank;

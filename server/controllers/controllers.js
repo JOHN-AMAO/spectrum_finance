@@ -1,4 +1,5 @@
 var Product = require("../models/data");
+const Bank = require("../models/data");
 const axios = require("axios");
 
 // Define the maximum number of items to fetch
@@ -22,15 +23,32 @@ module.exports.test = function (req, res) {
 module.exports.getBanks = (req, res) => {
   axios
     .request(options)
-    .then(function (response) {
-      // Add newly fetched items to the array
+    .then(async function (response) {
+      // Extract data from the response
+      const bankData = response.data.data;
 
-      // Send the current state of fetched items to the client
-      res.json([response.data]);
+      try {
+        // Iterate through the fetched bank data and save each entry to the database
+        for (const bank of bankData) {
+          const newBank = new Bank({
+            id: bank.id,
+            code: bank.code,
+            name: bank.name,
+          });
+          // Save the bank to the database
+          await newBank.save();
+        }
+        // Send a success response to the client
+        res.json({ message: "Banks saved successfully." });
+      } catch (error) {
+        console.error("Error saving banks:", error);
+        // Handle error and send appropriate response to client
+        res.status(500).send("Error saving banks to the database.");
+      }
     })
     .catch(function (error) {
-      console.error(error);
+      console.error("Error fetching banks:", error);
       // Handle error and send appropriate response to client
-      res.status(500).send("Internal Server Error");
+      res.status(500).send("Error fetching banks from the API.");
     });
 };

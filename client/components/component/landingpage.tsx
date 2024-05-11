@@ -43,7 +43,12 @@ export function Landingpage() {
               Contact
             </Link>
             <Link href='/auth'>
-              <Button variant='outline'>Login</Button>
+              <Button
+                variant='outline'
+                className='text-black'
+              >
+                Login
+              </Button>
             </Link>
           </nav>
           <HomeNavBar />

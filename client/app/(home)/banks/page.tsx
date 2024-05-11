@@ -1,45 +1,67 @@
-// @ts-nocheck
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+
+interface Bank {
+  id: number;
+  code: string;
+  name: string;
+}
+
+interface ApiResponse {
+  status: string;
+  data: Bank[];
+}
 
 const Page = () => {
-  const [data, setData] = useState([]); // Specify the type of data as an array of Bank objects
+  const [data, setData] = useState<ApiResponse | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const fetchData = async () => {
+    try {
+      const response: AxiosResponse<ApiResponse> = await axios.get(
+        "http://localhost:3001/banks"
+      );
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<any>("http://localhost:3001/banks");
-        setData([response.data]); // Set the data array from the response
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-
-      console.log(data);
-    };
-
     fetchData();
-  }, [data]);
-
-  const firstLayer = data.map(data);
-  const secondLayer = firstLayer.data;
+  }, []);
 
   return (
-    <div>
-      {secondLayer.map((bank) => {
-        return (
-          <>
-            <p
-              className='text-white'
-              key={bank.id}
-            >
-              {bank.name}
-            </p>
-            <p>it is not funny</p>
-          </>
-        );
-      })}
-    </div>
+    <>
+      <div>Page</div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : data && data.data ? (
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Code</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.data.map((bank: Bank) => (
+              <tr key={bank.id}>
+                <td>{bank.id}</td>
+                <td>{bank.code}</td>
+                <td>{bank.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No data available</p>
+      )}
+    </>
   );
 };
 
