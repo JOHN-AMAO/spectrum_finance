@@ -3,6 +3,8 @@ import Link from "next/link";
 import UserButton from "@/components/UserButton";
 
 import MobileNav from "./MobileNav";
+import { Button } from "./ui/button";
+import CreateSubAccount from "./CreateSubAccount";
 
 const Navbar = () => {
   return (
@@ -25,8 +27,11 @@ const Navbar = () => {
         </p>
       </Link>
       <div className='flex-between gap-5 '>
-        <UserButton />
-
+        <div className='flex gap-4'>
+          {/* <Button>Create Sub Account</Button> */}
+          <CreateSubAccount />
+          <UserButton />
+        </div>
         <MobileNav />
       </div>
     </nav>
