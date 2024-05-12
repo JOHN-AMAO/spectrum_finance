@@ -89,7 +89,8 @@ const CreateSubAccount = () => {
             <>
               <DialogHeader>
                 <DialogTitle>
-                  Create Sub Account to be able to transfer and recieve payments
+                  Create Sub Account to be able to transfer and recieve
+                  payments.
                 </DialogTitle>
               </DialogHeader>
               <Form {...form}>
