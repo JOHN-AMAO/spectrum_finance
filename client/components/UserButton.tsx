@@ -16,7 +16,7 @@ const UserButton = () => {
       <Popover>
         <PopoverTrigger>
           <Image
-            src={session?.data?.user?.image}
+            src={session?.data?.user?.image || "/default-image.png"}
             width={50}
             height={50}
             alt='me'
