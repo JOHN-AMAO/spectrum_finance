@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/Input";
 import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   subAccountId: z.string().min(2, {
@@ -27,6 +29,9 @@ const formSchema = z.object({
 });
 
 const TransferForm = () => {
+  const [isMoneyTransferred, setMoneyisTransferred] = useState(false);
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -67,6 +72,7 @@ const TransferForm = () => {
       .request(options)
       .then(function (response) {
         console.log(response.data);
+        setMoneyisTransferred(true);
       })
       .catch(function (error) {
         console.error(error);
@@ -79,122 +85,138 @@ const TransferForm = () => {
           Transfer to any chimoney account using it&apos;s sub account ID
         </h1>
         <div className='text-white'>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className='space-y-2'
-            >
-              <FormField
-                control={form.control}
-                name='subAccountId'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Sub-Account ID</FormLabel>
-                    <FormControl>
-                      <Input
-                        className='text-black'
-                        placeholder='Receiver`s account ID'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='email'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        className='text-black'
-                        placeholder='Reciever Email address'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='phoneNumber'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
-                    <FormControl>
-                      <Input
-                        className='text-black'
-                        placeholder='+234-XXXXXXXX'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='valueInUSD'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Amount in USD</FormLabel>
-                    <FormControl>
-                      <Input
-                        className='text-black'
-                        placeholder='What is the value in USD?'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='amount'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Amount</FormLabel>
-                    <FormControl>
-                      <Input
-                        className='text-black'
-                        placeholder=''
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='currency'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Currency</FormLabel>
-                    <FormControl>
-                      <Input
-                        className='text-black'
-                        placeholder='USD'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button
-                className='text-black mt-2'
-                type='submit'
-                variant='outline'
-              >
-                Submit
-              </Button>
-            </form>
-          </Form>
+          {!isMoneyTransferred ? (
+            <>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className='space-y-2'
+                >
+                  <FormField
+                    control={form.control}
+                    name='subAccountId'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Sub-Account ID</FormLabel>
+                        <FormControl>
+                          <Input
+                            className='text-black'
+                            placeholder='Receiver`s account ID'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='email'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input
+                            className='text-black'
+                            placeholder='Reciever Email address'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='phoneNumber'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                          <Input
+                            className='text-black'
+                            placeholder='+234-XXXXXXXX'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='valueInUSD'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Amount in USD</FormLabel>
+                        <FormControl>
+                          <Input
+                            className='text-black'
+                            placeholder='What is the value in USD?'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='amount'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Amount</FormLabel>
+                        <FormControl>
+                          <Input
+                            className='text-black'
+                            placeholder=''
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='currency'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Currency</FormLabel>
+                        <FormControl>
+                          <Input
+                            className='text-black'
+                            placeholder='USD'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button
+                    className='text-black mt-2'
+                    type='submit'
+                    variant='outline'
+                  >
+                    Submit
+                  </Button>
+                </form>
+              </Form>
+            </>
+          ) : (
+            <>
+              <div className='text-white'>
+                <h1 className='text-4xl font-extrabold'>
+                  Your Money has been transferred to the user
+                </h1>
+                <p className='text-xl'>
+                  For more information, check the console
+                </p>
+                <Button onClick={() => router.refresh()}>Refresh</Button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
