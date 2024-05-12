@@ -35,7 +35,7 @@ const MeetingTypeList = () => {
         title='Analytics'
         description='Check the analysis of your data'
         className='bg-purple-1'
-        handleClick={() => router.push("/analytics")}
+        handleClick={() => router.push("/history")}
       />
       <HomeCard
         img='/icons/banks.png'
