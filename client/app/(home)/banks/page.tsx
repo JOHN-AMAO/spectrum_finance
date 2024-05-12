@@ -59,7 +59,7 @@ const Page = () => {
           </tbody>
         </table>
       ) : (
-        <p>No data available</p>
+        <p>Unable to fetch data into UI, check the console</p>
       )}
     </>
   );

@@ -213,7 +213,13 @@ const TransferForm = () => {
                 <p className='text-xl'>
                   For more information, check the console
                 </p>
-                <Button onClick={() => router.refresh()}>Refresh</Button>
+                <Button
+                  className='text-black'
+                  variant='outline'
+                  onClick={() => router.push("/dashboard")}
+                >
+                  Go To dashboard
+                </Button>
               </div>
             </>
           )}
