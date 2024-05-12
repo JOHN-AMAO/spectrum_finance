@@ -1,5 +1,6 @@
 # Spectrum Finance
 
+[Website Link](https://spectrum-finance.vercel.app/)
 Powered by Chimoney
 
 ## About
@@ -20,3 +21,22 @@ Spectrum Finance is a cutting-edge fintech platform designed to revolutionize th
 ## Secure Payments, Seamless Finance Management
 
 Our platform offers a comprehensive solution for all your financial needs, from secure payments to advanced finance management tools.
+
+## Tech Stack
+
+Nextjs
+Nextjs API routes(some backend functions)
+Next Auth(for authentication)
+MongoDB(as the database)
+Node and Express(backend)
+Google Cloud
+
+## To run the Application
+
+1. Clone the repo
+2. cd into client
+3. run npm install
+4. create a .env file and add environment variables for MongoDb(DATABASE_URL),GOOGLE_CLIENT_ID and
+   GOOGLE_CLIENT_SECRET
+5. run npx prisma generate to generate your prisma client to interact with your database Models/schema(in case of further development)
+6. run npm run dev(make sure you have node installed)
