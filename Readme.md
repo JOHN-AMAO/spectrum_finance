@@ -24,12 +24,12 @@ Our platform offers a comprehensive solution for all your financial needs, from 
 
 ## Tech Stack
 
-Nextjs
-Nextjs API routes(some backend functions)
-Next Auth(for authentication)
-MongoDB(as the database)
-Node and Express(backend)
-Google Cloud
+1.Nextjs
+2.Nextjs API routes(some backend functions)
+3.Next Auth(for authentication)
+4.MongoDB(as the database)
+5.Node and Express(backend)
+6.Google Cloud
 
 ## To run the Application
 
