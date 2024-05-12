@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import prisma from "@/app/libs/prismadb";
 import { Button } from "./ui/button";
 import {
   Form,
@@ -43,8 +44,9 @@ const CreateSubAccount = () => {
       phoneNumber: "",
     },
   });
-
+  const [subAccountCreated, setSubAccountCreated] = useState(false);
   function onSubmit(values: z.infer<typeof formSchema>) {
+    axios.post("create-sub-account", values);
     const options = {
       method: "POST",
       url: "https://api-v2-sandbox.chimoney.io/v0.2/sub-account/create",
@@ -62,15 +64,20 @@ const CreateSubAccount = () => {
         phoneNumber: values.phoneNumber,
       },
     };
+
     axios
       .request(options)
-      .then(function (response) {
+      .then(async function (response) {
         console.log(response.data);
+        setSubAccountCreated(true);
+        console.log(values);
       })
+
       .catch(function (error) {
         console.error(error);
       });
   }
+
   return (
     <div>
       <Dialog>
@@ -79,104 +86,116 @@ const CreateSubAccount = () => {
           <Button> Create Sub Account</Button>
         </DialogTrigger>
         <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
-              Create Sub Account to be able to transfer and recieve payments
-            </DialogTitle>
-            {/* <DialogDescription>
-              A Sub Account allows you to create a fully fledged Account that
-              allows you to sent make transfers to 100+ countries
-            </DialogDescription> */}
-          </DialogHeader>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className='space-y-4'
-            >
-              <FormField
-                control={form.control}
-                name='name'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder='Mide Jones'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='email'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder='user@mail.com'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='firstName'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>First Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder=''
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='lastName'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Last Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder=''
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='phoneNumber'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder='+234-XXXXXXXXXX'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          {!subAccountCreated ? (
+            <>
+              <DialogHeader>
+                <DialogTitle>
+                  Create Sub Account to be able to transfer and recieve payments
+                </DialogTitle>
+              </DialogHeader>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className='space-y-4'
+                >
+                  <FormField
+                    control={form.control}
+                    name='name'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Username</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder='Mide Jones'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='email'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder='user@mail.com'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='firstName'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder=''
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='lastName'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder=''
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='phoneNumber'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder='+234-XXXXXXXXXX'
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-              <Button type='submit'>Submit</Button>
-            </form>
-          </Form>
+                  <Button type='submit'>Submit</Button>
+                </form>
+              </Form>
+            </>
+          ) : (
+            <div>
+              <DialogHeader>
+                <DialogTitle>
+                  Your Sub Account has been successfully created
+                </DialogTitle>
+                <DialogDescription>
+                  Now that your sub account has been created, you can now
+                  perform actions on your account
+                </DialogDescription>
+              </DialogHeader>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>

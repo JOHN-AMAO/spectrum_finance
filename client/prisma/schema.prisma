@@ -24,6 +24,17 @@ model User {
   accounts Account[]
 
 }
+// schema.prisma
+
+model SubAccount {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String
+  firstName   String
+  lastName    String
+  phoneNumber String
+}
+
 
 model Account {
   id String @id @default(auto()) @map("_id") @db.ObjectId
